@@ -1,0 +1,819 @@
+{
+	"info": {
+		"_postman_id": "ee811ad1-94c9-4829-b606-55de0480e9cc",
+		"name": "Compile code",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "problem",
+			"item": [
+				{
+					"name": "Get all problem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update problem",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":{\r\n        \"_id\":\"6377c5db11c5d1228d8f4020\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/problem/63789499e44dcc92e7c31b75",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem",
+								"63789499e44dcc92e7c31b75"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create problem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"p2\",\r\n    \"description\": \"d2\",\r\n    \"user\":{\r\n        \"_id\":\"637893cfe44dcc92e7c31b6c\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/problem",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get problem by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem/63789482e44dcc92e7c31b71",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem",
+								"63789482e44dcc92e7c31b71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all testcase in problem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem/63789482e44dcc92e7c31b71/testcases",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem",
+								"63789482e44dcc92e7c31b71",
+								"testcases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all submission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzhhYWY0NzljNzY1ZDk4NWUxZjg1NyIsImlhdCI6MTY2ODg1Mjc2Mn0.3Bl9a22-F_4rI1HEwlLwiox_Z9F0-Ua_myhw7g8AVLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem/63798e9c375e1a88e0fde445/submissions",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem",
+								"63798e9c375e1a88e0fde445",
+								"submissions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "testcase",
+			"item": [
+				{
+					"name": "Get all testcase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update testcase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzhhYWY0NzljNzY1ZDk4NWUxZjg1NyIsImlhdCI6MTY2ODg1Mjc2Mn0.3Bl9a22-F_4rI1HEwlLwiox_Z9F0-Ua_myhw7g8AVLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"2\",\r\n    \"output\":\"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase/637896dbd16411889988eb3d",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase",
+								"637896dbd16411889988eb3d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create testcase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"[1,2,3]\",\r\n    \"output\":\"test\",\r\n    \"problem\":{\r\n        \"_id\":\"63789482e44dcc92e7c31b71\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get testcase by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/testcase/637896dcd16411889988eb3f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase",
+								"637896dcd16411889988eb3f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "submission",
+			"item": [
+				{
+					"name": "Get all submission",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzhhYWY0NzljNzY1ZDk4NWUxZjg1NyIsImlhdCI6MTY2ODg1Mjc2Mn0.3Bl9a22-F_4rI1HEwlLwiox_Z9F0-Ua_myhw7g8AVLM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/submission",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"submission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update testcase",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"[1,2,3]\",\r\n    \"output\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase/637896dcd16411889988eb3f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase",
+								"637896dcd16411889988eb3f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create submission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"[1,2,3]\",\r\n    \"output\":\"test\",\r\n    \"problem\":{\r\n        \"_id\":\"63789482e44dcc92e7c31b71\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get submission by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/submission/637896dcd16411889988eb3f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"submission",
+								"637896dcd16411889988eb3f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all history of submission",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "history",
+			"item": [
+				{
+					"name": "Get all testcase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/problem",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"problem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update testcase",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"[1,2,3]\",\r\n    \"output\":\"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase/637896dcd16411889988eb3f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase",
+								"637896dcd16411889988eb3f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create testcase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"input\":\"[1,2,3]\",\r\n    \"output\":\"test\",\r\n    \"problem\":{\r\n        \"_id\":\"63789482e44dcc92e7c31b71\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/testcase",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get testcase by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/testcase/637896dcd16411889988eb3f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"testcase",
+								"637896dcd16411889988eb3f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all history",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/history",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Get user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user\",\r\n    \"email\":\"user\",\r\n    \"password\": \"1\",\r\n    \"name\":\"name1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"password\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/user/6378aaf479c765d985e1f857",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"6378aaf479c765d985e1f857"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user/63788fbeaba1f2694a42702f",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"63788fbeaba1f2694a42702f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Submit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzhhYWY0NzljNzY1ZDk4NWUxZjg1NyIsImlhdCI6MTY2ODg1Mjc2Mn0.3Bl9a22-F_4rI1HEwlLwiox_Z9F0-Ua_myhw7g8AVLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"language\": \"python\",\r\n    \"code\": \"# enter a number from keyboard\\r\\n\\r\\nnum = int(input())\\r\\nprint( num)\\r\\n\",\r\n    \"input\": \"1\",\r\n    \"save\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/compile",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"compile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get result",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNzhhYWY0NzljNzY1ZDk4NWUxZjg1NyIsImlhdCI6MTY2ODg1Mjc2Mn0.3Bl9a22-F_4rI1HEwlLwiox_Z9F0-Ua_myhw7g8AVLM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/compile/result/35bfaceb-a7c2-4790-a5d9-521a3b7febdc",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"compile",
+						"result",
+						"35bfaceb-a7c2-4790-a5d9-521a3b7febdc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
