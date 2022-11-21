@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import { Route, Routes } from "react-router-dom";
+import FooterPage from "./components/Footer";
 import MyNavBar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -15,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <MyNavBar />
-      <Container>
+      <Container style={{ minHeight: "78vh" }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<User />} />
@@ -33,6 +34,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
+      <hr />
+      <FooterPage />
     </div>
   );
 }
