@@ -1,7 +1,20 @@
-import React from "react";
+import TextArea from "antd/es/input/TextArea";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import ProblemApi from "../../../../api/problem.api";
 
-const ProblemDescription = () => {
+const ProblemDescription = ({ problemId }) => {
+  const [data, setData] = React.useState();
+
+  useEffect(() => {
+    ProblemApi.getProblemById(problemId)
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div
       style={{
@@ -16,43 +29,18 @@ const ProblemDescription = () => {
         <Col>
           <p>
             <i className="fa fa-user" />
-            User create
+            <span style={{ marginLeft: "5px" }}>{data?.user.name}</span>
           </p>
         </Col>
 
         <Col>
           <i className="fa fa-book" />
-          <p>Name problem</p>
+          <p>{data?.title}</p>
         </Col>
       </Row>
       {/* detail  */}
       <Row>
-        <p>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed euismod, nisl vel tincidunt aliquam, nisl nisl aliquet
-          nisl, nec aliquet nisl nisl eu nisl. Nulla facilisi.
-        </p>
-      </Row>
-      <Row>
-        <p>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed euismod, nisl vel tincidunt aliquam, nisl nisl aliquet
-          nisl, nec aliquet nisl nisl eu nisl. Nulla facilisi.
-        </p>
-      </Row>
-      <Row>
-        <p>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed euismod, nisl vel tincidunt aliquam, nisl nisl aliquet
-          nisl, nec aliquet nisl nisl eu nisl. Nulla facilisi.
-        </p>
-      </Row>
-      <Row>
-        <p>
-          lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-          facilisi. Sed euismod, nisl vel tincidunt aliquam, nisl nisl aliquet
-          nisl, nec aliquet nisl nisl eu nisl. Nulla facilisi.
-        </p>
+        <TextArea rows={5} readOnly bordered={null} value={data?.description} />
       </Row>
     </div>
   );

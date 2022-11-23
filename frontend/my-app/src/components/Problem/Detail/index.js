@@ -1,10 +1,12 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import Split from "react-split";
 import ProblemCodeLayout from "./ProblemCodeLayout";
 import ProblemDescription from "./ProblemDescripion";
 import "./style.css";
 
-const ProblemDetailInfo = () => {
+const ProblemDetailInfo = ({ code, setCode }) => {
+  const param = useParams();
   return (
     <div>
       <Split
@@ -19,8 +21,8 @@ const ProblemDetailInfo = () => {
         direction="horizontal"
         cursor="col-resize"
       >
-        <ProblemDescription />
-        <ProblemCodeLayout />
+        <ProblemDescription problemId={param.problemId} />
+        <ProblemCodeLayout code={code} setCode={setCode} />
       </Split>
     </div>
   );

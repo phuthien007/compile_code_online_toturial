@@ -295,7 +295,11 @@ router.delete(
 async function getProblem(req, res, next) {
   let problem;
   try {
-    problem = await ProblemModel.findById(req.params.id);
+    problem = await ProblemModel.findById(req.params.id).populate({
+      path: "user",
+      select: "name -_id",
+      model: UserModel,
+    });
     if (problem == null) {
       return res.status(404).json({ message: "Cannot find problem" });
     }

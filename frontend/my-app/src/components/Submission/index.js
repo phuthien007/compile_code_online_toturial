@@ -1,53 +1,34 @@
+import moment from "moment";
 import { Button } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 
-function SubmissionTable() {
+function SubmissionTable({ dataSubmission }) {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Date</th>
+          <th>Problem</th>
+          <th>Languge</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>
-            <Link to="/submission/1">
-              <Button>View Detail</Button>
-            </Link>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>
-            <Link to="/submission/1">
-              <Button>View Detail</Button>
-            </Link>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>
-            <Link to="/submission/1">
-              <Button>View Detail</Button>
-            </Link>
-          </td>
-        </tr>
+        {dataSubmission?.map((submission, index) => (
+          <tr>
+            <td>{index + 1}</td>
+            <td>{moment(submission.date).format("DD-MM-YYYY HH:mm:ss")}</td>
+            <td>{submission.problem.title}</td>
+            <td>{submission.language}</td>
+            <td>
+              <Link to={`/submission/${submission._id}`}>
+                <Button>View Detail</Button>
+              </Link>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   );

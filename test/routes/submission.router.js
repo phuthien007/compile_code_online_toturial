@@ -12,10 +12,23 @@ const {
 } = require("./compile.router");
 
 // setup endpoint get all submission
-router.get("/", async (req, res) => {
+router.get("/", (req, res) => {
   try {
-    const submissions = await SubmissionModel.find();
-    res.json(submissions);
+    const submissions = SubmissionModel.find({}, (err, submissions) => {
+      var opts = [
+        { path: "problem", select: "title  -_id" },
+        // { path: "user", select: "name  -_id" },
+      ];
+      const data = [];
+      var promises = SubmissionModel.populate(submissions, opts)
+        .then((sub) => {
+          data.push(sub);
+        })
+        .then(() => {
+          res.json(data.flat());
+        });
+      console.log(promises);
+    }).sort({ date: -1 });
   } catch (err) {
     res.json({ message: err });
   }
@@ -75,7 +88,7 @@ router.post("/", async (req, res) => {
               }
             }
           );
-        }, 5000);
+        }, 15000);
       });
     }
     res.status(201).json(newSubmission);

@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import FooterPage from "./components/Footer";
 import MyNavBar from "./components/Navbar";
@@ -11,26 +13,83 @@ import ProblemDetail from "./pages/Problem/Detail";
 import Submission from "./pages/Submission";
 import SubmissionDetail from "./pages/Submission/Detail";
 import User from "./pages/User";
-
+import { loadCurrentUser, selectUser } from "./store/user/userSlice";
+import { store as storeLocation } from "store";
+import Protected from "./components/ProtectRouter";
 function App() {
+  const isAuthorized = localStorage.getItem("compileTokenApp") ? true : false;
+
   return (
     <div className="App">
-      <MyNavBar />
+      <MyNavBar isAuthorized={isAuthorized} />
       <Container style={{ minHeight: "78vh" }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/problem" element={<Problem />} />
-          <Route path="/problem/:problemId" element={<ProblemDetail />} />
-          <Route path="/submission" element={<Submission />} />
+          <Route
+            path="/"
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path="/user"
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <User />
+              </Protected>
+            }
+          />
+          <Route
+            path="/problem"
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <Problem />
+              </Protected>
+            }
+          />
+          <Route
+            path="/problem/:problemId"
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <ProblemDetail />
+              </Protected>
+            }
+          />
+          <Route
+            path="/submission"
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <Submission />
+              </Protected>
+            }
+          />
           <Route
             path="/submission/:submissionId"
-            element={<SubmissionDetail />}
+            element={
+              <Protected isLoggedIn={isAuthorized}>
+                <SubmissionDetail />
+              </Protected>
+            }
           />
 
           {/* auth */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <Protected isLoggedIn={!isAuthorized}>
+                <Login />
+              </Protected>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Protected isLoggedIn={!isAuthorized}>
+                <Register />
+              </Protected>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>

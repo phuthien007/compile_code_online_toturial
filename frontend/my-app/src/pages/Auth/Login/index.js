@@ -1,18 +1,33 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import ApiUser from "../../../api/user.api";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
-
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
     }
 
     setValidated(true);
+    ApiUser.login(
+      event.target.elements.username.value,
+      event.target.elements.password.value
+    )
+      .then((res) => {
+        if (res) {
+          localStorage.setItem("compileTokenApp", res.data.accessToken);
+        }
+        window.location.href = "/";
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="row">
@@ -27,6 +42,7 @@ const Login = () => {
                   required
                   type="text"
                   placeholder="Enter username"
+                  name="username"
                 />
                 <Form.Control.Feedback type="invalid">
                   Please enter a username.
@@ -34,13 +50,22 @@ const Login = () => {
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control required type="password" placeholder="Password" />
+                <Form.Control
+                  required
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                />
                 <Form.Control.Feedback type="invalid">
                   Please enter your password
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Remember Me" />
+                <Form.Check
+                  type="checkbox"
+                  label="Remember Me"
+                  name="rememberMe"
+                />
               </Form.Group>
               <Button variant="primary" type="submit">
                 Login

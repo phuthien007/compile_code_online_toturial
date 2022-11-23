@@ -33,8 +33,18 @@ router.post("/login", async (req, res) => {
 // setup endpoint get all user
 router.get("/", checkLogin, async (req, res) => {
   try {
-    const users = await UserModel.find();
+    const users = await UserModel.find().select("-password");
     res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// load current user
+router.get("/me", checkLogin, async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.user._id).select("-password");
+    res.json(user);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -46,7 +56,7 @@ router.get("/:id", checkLogin, getUser, (req, res) => {
 });
 
 // setup endpoint create user
-router.post("/", async (req, res) => {
+router.post("/signup", async (req, res) => {
   const user = new UserModel(req.body);
   try {
     const newUser = await user.save();

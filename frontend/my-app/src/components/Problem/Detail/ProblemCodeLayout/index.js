@@ -6,18 +6,8 @@ import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import "prismjs/components";
 import "prismjs";
-import { Button } from "react-bootstrap";
 
-const ProblemCodeLayout = () => {
-  const [code, setCode] = React.useState(
-    `import java.io.*;
-
-class Codechef {
-    public static void main (String[] args) {
-        System.out.println("Codechef!");
-    }
-}`
-  );
+const ProblemCodeLayout = ({ code, setCode }) => {
   return (
     <div
       style={{
@@ -41,15 +31,6 @@ class Codechef {
           position: "relative",
         }}
       />
-      <Button
-        style={{
-          position: "absolute",
-          right: "15px",
-          bottom: "-20px",
-        }}
-      >
-        Submit
-      </Button>
     </div>
   );
 };

@@ -1,32 +1,29 @@
 import Accordion from "react-bootstrap/Accordion";
 
-function Testcases() {
+function Testcases({ data }) {
   return (
     <Accordion>
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
-        <Accordion.Header>Accordion Item #2</Accordion.Header>
-        <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Accordion.Body>
-      </Accordion.Item>
+      {data?.length
+        ? data.map((item, index) => (
+            <Accordion.Item eventKey={index + 1}>
+              <Accordion.Header>Testcase #{index + 1}</Accordion.Header>
+              <Accordion.Body>
+                <p>Input: {item.testcase.input}</p>
+                <p>Output: {item.output}</p>
+                <p>Expected: {item.testcase.output}</p>
+                <p>
+                  Result:{" "}
+                  {item.testcase.output ===
+                  item.output.replace(/(\r\n|\n|\r)/gm, "")
+                    ? "Correctly answer"
+                    : "Wrong answer"}
+                </p>
+                <p>Memory: {item.memory}</p>
+                <p>Time: {item.time}</p>
+              </Accordion.Body>
+            </Accordion.Item>
+          ))
+        : "Not found testcase"}
     </Accordion>
   );
 }
