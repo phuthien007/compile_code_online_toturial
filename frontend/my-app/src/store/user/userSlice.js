@@ -5,7 +5,7 @@ const initialState = {
   name: "",
   email: "",
   roles: [],
-  isAuthorized: false,
+  isAuthorized: localStorage.getItem("compileTokenApp") || false,
 };
 
 export const userSlice = createSlice({

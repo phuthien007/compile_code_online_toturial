@@ -71,7 +71,13 @@ const FormProblem = ({ problem, refreshData, setRefreshData }) => {
       )}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit problem</Modal.Title>
+          <Modal.Title>
+            {problem ? (
+              <p onClick={handleShow}>Edit Problem</p>
+            ) : (
+              <p onClick={handleShow}>Create Problem</p>
+            )}
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body
           style={{

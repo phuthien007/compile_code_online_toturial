@@ -1,3 +1,4 @@
+import { notification } from "antd";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,6 +22,9 @@ const Register = () => {
     })
       .then(() => {
         navigate("/login");
+        notification.success({
+          message: "Register successful",
+        });
       })
       .catch((err) => console.log(err));
   };
