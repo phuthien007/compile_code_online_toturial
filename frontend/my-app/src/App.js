@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import FooterPage from "./components/Footer";
 import MyNavBar from "./components/Navbar";
 import Login from "./pages/Auth/Login";
@@ -17,7 +17,18 @@ import { loadCurrentUser, selectUser } from "./store/user/userSlice";
 import { store as storeLocation } from "store";
 import Protected from "./components/ProtectRouter";
 function App() {
-  const isAuthorized = localStorage.getItem("compileTokenApp") ? true : false;
+  const { isAuthorized } = useSelector(selectUser);
+  const navigate = useNavigate();
+  const location = useLocation();
+  useEffect(() => {
+    if (
+      !isAuthorized &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/signup"
+    ) {
+      navigate("/login");
+    }
+  }, [isAuthorized, navigate]);
 
   return (
     <div className="App">

@@ -1,13 +1,17 @@
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { selectUser, userAction } from "../../store/user/userSlice";
 
-function MyNavBar({ isAuthorized }) {
+function MyNavBar() {
   let location = useLocation();
-
+  const dispatch = useDispatch();
+  const { isAuthorized } = useSelector(selectUser);
   return (
     <Navbar bg="dark" variant="dark" sticky="top">
       <Container>
@@ -54,8 +58,8 @@ function MyNavBar({ isAuthorized }) {
           <Button
             hidden={!isAuthorized}
             onClick={() => {
+              dispatch(userAction.logout());
               localStorage.removeItem("compileTokenApp");
-              window.location.href = "/";
             }}
           >
             Logout

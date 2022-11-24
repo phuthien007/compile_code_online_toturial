@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import { notification } from "antd";
+import React, { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import ApiUser from "../../../api/user.api";
+import { selectUser, userAction } from "../../../store/user/userSlice";
 
 const Login = () => {
   const [validated, setValidated] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isAuthorized } = useSelector(selectUser);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    event.stopPropagation();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
     }
@@ -21,14 +26,28 @@ const Login = () => {
       .then((res) => {
         if (res) {
           localStorage.setItem("compileTokenApp", res.data.accessToken);
+          dispatch(userAction.login());
+          notification.success({
+            message: "Login success",
+            description: "Login success",
+          });
         }
-        window.location.href = "/";
-        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
+        notification.error({
+          message: "Login failed",
+          description: "Username or password is incorrect",
+        });
       });
   };
+
+  useEffect(() => {
+    if (isAuthorized) {
+      navigate("/");
+    }
+  }, [isAuthorized]);
+
   return (
     <div className="row">
       <div className="col-md-6 offset-md-3 mt-4">

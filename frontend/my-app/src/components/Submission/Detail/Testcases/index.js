@@ -6,7 +6,18 @@ function Testcases({ data }) {
       {data?.length
         ? data.map((item, index) => (
             <Accordion.Item eventKey={index + 1}>
-              <Accordion.Header>Testcase #{index + 1}</Accordion.Header>
+              <Accordion.Header>
+                Testcase #{index + 1}
+                {item.testcase.output ===
+                item.output.replace(/(\r\n|\n|\r)/gm, "") ? (
+                  <i
+                    className="fa fa-check-circle"
+                    style={{ color: "green" }}
+                  />
+                ) : (
+                  <i className="fa fa-circle" style={{ color: "red" }} />
+                )}
+              </Accordion.Header>
               <Accordion.Body>
                 <p>Input: {item.testcase.input}</p>
                 <p>Output: {item.output}</p>
