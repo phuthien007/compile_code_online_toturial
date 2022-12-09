@@ -17,44 +17,47 @@ import { loadCurrentUser, selectUser } from "./store/user/userSlice";
 import { store as storeLocation } from "store";
 import Protected from "./components/ProtectRouter";
 function App() {
-  const { isAuthorized } = useSelector(selectUser);
+  const user = useSelector(selectUser);
+
   const navigate = useNavigate();
   const location = useLocation();
   useEffect(() => {
     if (
-      !isAuthorized &&
+      !user.isAuthorized &&
       location.pathname !== "/login" &&
       location.pathname !== "/signup"
     ) {
       navigate("/login");
     }
-  }, [isAuthorized, navigate]);
+  }, [user.isAuthorized, navigate]);
 
   return (
     <div className="App">
-      <MyNavBar isAuthorized={isAuthorized} />
+      <MyNavBar isAuthorized={user.isAuthorized} />
       <Container style={{ minHeight: "78vh" }}>
         <Routes>
           <Route
             path="/"
             element={
-              <Protected isLoggedIn={isAuthorized}>
+              <Protected isLoggedIn={user.isAuthorized}>
                 <Home />
               </Protected>
             }
           />
-          <Route
-            path="/user"
-            element={
-              <Protected isLoggedIn={isAuthorized}>
-                <User />
-              </Protected>
-            }
-          />
+          {user.roles.includes("admin") && (
+            <Route
+              path="/user"
+              element={
+                <Protected isLoggedIn={user.isAuthorized}>
+                  <User />
+                </Protected>
+              }
+            />
+          )}
           <Route
             path="/problem"
             element={
-              <Protected isLoggedIn={isAuthorized}>
+              <Protected isLoggedIn={user.isAuthorized}>
                 <Problem />
               </Protected>
             }
@@ -62,7 +65,7 @@ function App() {
           <Route
             path="/problem/:problemId"
             element={
-              <Protected isLoggedIn={isAuthorized}>
+              <Protected isLoggedIn={user.isAuthorized}>
                 <ProblemDetail />
               </Protected>
             }
@@ -70,7 +73,7 @@ function App() {
           <Route
             path="/submission"
             element={
-              <Protected isLoggedIn={isAuthorized}>
+              <Protected isLoggedIn={user.isAuthorized}>
                 <Submission />
               </Protected>
             }
@@ -78,7 +81,7 @@ function App() {
           <Route
             path="/submission/:submissionId"
             element={
-              <Protected isLoggedIn={isAuthorized}>
+              <Protected isLoggedIn={user.isAuthorized}>
                 <SubmissionDetail />
               </Protected>
             }
@@ -88,7 +91,7 @@ function App() {
           <Route
             path="/login"
             element={
-              <Protected isLoggedIn={!isAuthorized}>
+              <Protected isLoggedIn={!user.isAuthorized}>
                 <Login />
               </Protected>
             }
@@ -96,7 +99,7 @@ function App() {
           <Route
             path="/signup"
             element={
-              <Protected isLoggedIn={!isAuthorized}>
+              <Protected isLoggedIn={!user.isAuthorized}>
                 <Register />
               </Protected>
             }

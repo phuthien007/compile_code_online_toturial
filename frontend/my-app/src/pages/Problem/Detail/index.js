@@ -23,7 +23,7 @@ class Test {
   const handleSubmit = () => {
     SubmissionApi.createSubmission({
       code,
-      language: "python",
+      language: "java",
       save: false,
       problem: {
         _id: param.problemId,

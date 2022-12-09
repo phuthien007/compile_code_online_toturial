@@ -1,14 +1,33 @@
+import { notification } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import ProblemApi from "../../api/problem.api";
+import { selectUser } from "../../store/user/userSlice";
 import FormProblem from "./FormProblem";
 
 function ProblemTable({ dataProblem, setRefreshData, refreshData }) {
+  const user = useSelector(selectUser);
+
+  const onHandleDelete = (id) => {
+    ProblemApi.deleteProblem(id)
+      .then((res) => {
+        if (res) {
+          setRefreshData(!refreshData);
+          notification.success({
+            message: "Delete problem successfully",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Table striped bordered hover>
       <thead>
@@ -43,6 +62,14 @@ function ProblemTable({ dataProblem, setRefreshData, refreshData }) {
                 setRefreshData={setRefreshData}
                 problem={problem}
               />
+              {user.roles.includes("admin") && (
+                <Button
+                  onClick={() => onHandleDelete(problem._id)}
+                  style={{ marginLeft: 5, backgroundColor: "red" }}
+                >
+                  Delete
+                </Button>
+              )}
             </td>
           </tr>
         ))}

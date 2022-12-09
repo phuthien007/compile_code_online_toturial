@@ -19,11 +19,14 @@ function SubmissionTable({ dataSubmission }) {
         {dataSubmission?.map((submission, index) => (
           <tr>
             <td>{index + 1}</td>
-            <td>{moment(submission.date).format("DD-MM-YYYY HH:mm:ss")}</td>
-            <td>{submission.problem.title}</td>
-            <td>{submission.language}</td>
+            <td>{moment(submission?.date).format("DD-MM-YYYY HH:mm:ss")}</td>
+            <td>{submission?.problem?.title || "Problem is deleted"}</td>
+            <td>{submission?.language}</td>
             <td>
-              <Link to={`/submission/${submission._id}`}>
+              <Link
+                to={`/submission/${submission._id}`}
+                state={{ code: submission?.code }}
+              >
                 <Button>View Detail</Button>
               </Link>
             </td>

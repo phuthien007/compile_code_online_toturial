@@ -27,6 +27,9 @@ const Login = () => {
         if (res) {
           localStorage.setItem("compileTokenApp", res.data.accessToken);
           dispatch(userAction.login());
+          ApiUser.loadCurrentUser().then((res) => {
+            dispatch(userAction.setUserInfo(res.data));
+          });
           notification.success({
             message: "Login success",
             description: "Login success",

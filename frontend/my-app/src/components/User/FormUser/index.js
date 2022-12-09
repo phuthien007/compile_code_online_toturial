@@ -112,6 +112,18 @@ const FormUser = ({ user }) => {
               <Input type="email" />
             </Form.Item>
             <Form.Item
+              label="Role"
+              name="roles"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your role!",
+                },
+              ]}
+            >
+              <Input type="text" placeholder="admin or user" />
+            </Form.Item>
+            <Form.Item
               label="Password"
               name="password"
               rules={[
